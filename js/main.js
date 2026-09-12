@@ -26,6 +26,7 @@
   const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>';
   const ARROW_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
   const ARROW_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+  const ARROW_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
 
   /* ---------- Images avec cadre « à ajouter » ---------- */
   function media(src, { ratio = "16/10", alt = "", label, eager = false } = {}) {
@@ -85,6 +86,8 @@
     const A = SITE.about;
     box.innerHTML = A.paragraphs.map((p) => `<p>${esc(t(p))}</p>`).join("");
     $("#aboutTags").innerHTML = A.tags.map((x) => `<span class="tag">${esc(t(x))}</span>`).join("");
+    const cta = $("#aboutCta");
+    if (cta) cta.innerHTML = A.cta ? `<a href="#projects" class="btn btn-outline about-cta">${esc(t(A.cta))} ${ARROW_DOWN}</a>` : "";
     $("#aboutStats").innerHTML = (A.stats || []).map((s) => `<div class="stat"><strong>${esc(t(s.value))}</strong><span>${esc(t(s.label))}</span></div>`).join("");
   }
 
@@ -300,14 +303,6 @@
     if (P.phone) rows.push(`<li><a href="tel:${esc(P.phone.replace(/\s+/g, ""))}">✆ ${esc(P.phone)}</a></li>`);
     $("#contactList").innerHTML = rows.join("");
     $("#socials").innerHTML = P.socials.filter((s) => s.url).map((s) => `<a class="social" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join("");
-    // Formulaire masqué tant que Formspree n'est pas configuré
-    const id = (P.formspreeId || "").trim();
-    const configured = id && id !== "VOTRE_ID_FORMSPREE";
-    const contactForm = $("#contactForm");
-    if (contactForm) {
-      contactForm.hidden = !configured;
-      contactForm.closest(".contact-grid")?.classList.toggle("no-form", !configured);
-    }
   }
 
   const form = $("#contactForm");
@@ -319,7 +314,11 @@
       const id = (P.formspreeId || "").trim();
       status.className = "form-status";
       if (!id || id === "VOTRE_ID_FORMSPREE") {
-        status.textContent = tr("form.notConfigured"); status.classList.add("err"); return;
+        // Formspree pas encore branché : on ouvre l'application mail du visiteur avec le message pré-rempli
+        const d = new FormData(form);
+        const body = `${d.get("message")}\n\n— ${d.get("name")} (${d.get("email")})`;
+        window.location.href = `mailto:${P.email}?subject=${encodeURIComponent(d.get("subject"))}&body=${encodeURIComponent(body)}`;
+        status.textContent = tr("form.mailto"); status.classList.add("ok"); return;
       }
       btn.disabled = true; btn.textContent = tr("form.sending");
       try {
