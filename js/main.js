@@ -28,8 +28,8 @@
   const ARROW_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
 
   /* ---------- Images avec cadre « à ajouter » ---------- */
-  function media(src, { ratio = "16/10", alt = "", label } = {}) {
-    const img = src ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" />` : "";
+  function media(src, { ratio = "16/10", alt = "", label, eager = false } = {}) {
+    const img = src ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="${eager ? "eager" : "lazy"}" />` : "";
     return `<figure class="media${src ? "" : " is-empty"}" style="aspect-ratio:${ratio}">${img}
       <figcaption class="media-ph">${ICON_IMG}<strong>${esc(label || tr("ph.image"))}</strong>${src ? `<code>${esc(src)}</code>` : ""}</figcaption></figure>`;
   }
@@ -57,7 +57,7 @@
       btn.setAttribute("aria-label", lang === "fr" ? "Switch to English" : "Passer en français");
     }
     const isAbout = document.body.classList.contains("page-whoami");
-    document.title = isAbout ? `${tr("nav.whoami")} — ${fullName()}` : `${fullName()} — ${t(P.role)}`;
+    document.title = isAbout ? `${tr("nav.whoami")} — ${fullName()}` : `${fullName()} — Portfolio`;
   }
 
   /* ---------- Blocs communs ---------- */
@@ -69,12 +69,12 @@
   /* ---------- Accueil ---------- */
   function renderHero() {
     const photo = $("#heroPhoto"); if (!photo) return;
-    photo.innerHTML = media(P.photo, { ratio: "4/5", alt: fullName() });
+    photo.innerHTML = media(P.photo, { ratio: "4/5", alt: fullName(), eager: true });
     const cv = $("#cvLink");
     if (cv) { cv.hidden = !P.cv; cv.href = P.cv || "#"; }
     const ticker = $("#ticker");
     if (ticker) {
-      const words = [t(P.role), ...(SITE.about?.tags || []), ...SITE.skills.flatMap((c) => c.items.map((i) => i.name))];
+      const words = [...(SITE.about?.tags || []).map(t), ...SITE.skills.flatMap((c) => c.items.map((i) => t(i.name)))];
       const row = words.filter(Boolean).map((w) => `<span>${esc(w)}</span>`).join("");
       ticker.innerHTML = row + row; // doublé pour une boucle sans coupure
     }
@@ -92,22 +92,29 @@
   let filter = "all";
   function renderProjects() {
     const grid = $("#projectGrid"); if (!grid) return;
-    const engines = [...new Set(SITE.projects.map((p) => p.engine).filter(Boolean))];
-    $("#filters").innerHTML = engines.length > 1
-      ? ["all", ...engines].map((e) => `<button type="button" class="filter${e === filter ? " active" : ""}" data-filter="${esc(e)}">${esc(e === "all" ? tr("projects.all") : e)}</button>`).join("")
+    // Filtres par rôle (Programmeur, Game Designer…) tirés des projets
+    const roleList = (p) => (p.roles || []).map(t).filter(Boolean);
+    const roles = [...new Set(SITE.projects.flatMap(roleList))];
+    if (filter !== "all" && !roles.includes(filter)) filter = "all";
+    $("#filters").innerHTML = roles.length > 1
+      ? ["all", ...roles].map((r) => `<button type="button" class="filter${r === filter ? " active" : ""}" data-filter="${esc(r)}">${esc(r === "all" ? tr("projects.all") : r)}</button>`).join("")
       : "";
 
-    const list = SITE.projects.filter((p) => filter === "all" || p.engine === filter);
+    const list = SITE.projects.filter((p) => filter === "all" || roleList(p).includes(filter));
     const featured = list.find((p) => p.featured);
     const rest = list.filter((p) => p !== featured);
-    const meta = (p) => `<p class="card-meta"><b>${esc(t(p.year))}</b> · ${esc(t(p.engine))} · ${esc(t(p.genre))}</p>`;
+    const meta = (p) => {
+      const parts = [t(p.year), t(p.genre)].filter(Boolean).map(esc);
+      return parts.length ? `<p class="card-meta">${parts.map((x, i) => (i ? x : `<b>${x}</b>`)).join(" · ")}</p>` : "";
+    };
+    const rolesHtml = (p) => (roleList(p).length ? `<p class="card-roles">${roleList(p).map((r) => `<span>${esc(r)}</span>`).join("")}</p>` : "");
 
     $("#featured").innerHTML = featured ? `
       <article class="featured-card reveal" data-open="${esc(featured.id)}" tabindex="0" role="button" aria-label="${esc(tr("projects.open"))} : ${esc(t(featured.title))}">
         ${media(featured.thumb, { ratio: "16/10", alt: t(featured.title) })}
         <div class="featured-body">
           <span class="badge">${tr("projects.featured")}</span>
-          ${meta(featured)}
+          ${meta(featured)}${rolesHtml(featured)}
           <h3>${esc(t(featured.title))}</h3>
           <p>${esc(t(featured.summary))}</p>
           <div class="tags">${(featured.tags || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("")}</div>
@@ -119,7 +126,7 @@
       <article class="project-card reveal" data-open="${esc(p.id)}" tabindex="0" role="button" aria-label="${esc(tr("projects.open"))} : ${esc(t(p.title))}">
         ${media(p.thumb, { ratio: "16/10", alt: t(p.title) })}
         <div class="project-body">
-          ${meta(p)}
+          ${meta(p)}${rolesHtml(p)}
           <h3>${esc(t(p.title))}</h3>
           <p>${esc(t(p.summary))}</p>
           <span class="project-more">${tr("projects.open")}</span>
@@ -150,7 +157,7 @@
 
     const details = [
       ["detail.duration", p.duration], ["detail.year", p.year], ["detail.engine", p.engine],
-      ["detail.role", p.role], ["detail.team", p.team], ["detail.genre", p.genre],
+      ["detail.role", (p.roles || []).map(t).join(", ")], ["detail.team", p.team], ["detail.genre", p.genre],
     ].filter(([, v]) => t(v)).map(([k, v]) => `<div><dt>${tr(k)}</dt><dd>${esc(t(v))}</dd></div>`).join("");
 
     const desc = t(p.description).split(/\n\s*\n/).map((x) => `<p>${esc(x.trim())}</p>`).join("");
@@ -184,7 +191,7 @@
     $("#modalContent").innerHTML = `
       <div class="modal-hero">${p.video ? video(p.video) : media(p.thumb, { ratio: "16/9", alt: t(p.title) })}</div>
       <div class="modal-body">
-        <p class="card-meta"><b>${esc(t(p.year))}</b> · ${esc(t(p.genre))}</p>
+        <p class="card-meta">${[t(p.year), t(p.genre)].filter(Boolean).map(esc).join(" · ")}</p>
         <h2 id="modalTitle">${esc(t(p.title))}</h2>
         <div class="tags">${(p.tags || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("")}</div>
         <div class="modal-desc">${desc}</div>
@@ -263,10 +270,12 @@
     grid.innerHTML = SITE.skills.map((c) => `
       <div class="skill-cat reveal">
         <h3>${esc(t(c.category))}</h3>
-        ${c.items.map((s) => `
+        ${c.display === "tags"
+          ? `<div class="tags">${c.items.map((s) => `<span class="tag">${esc(t(s.name))}</span>`).join("")}</div>`
+          : c.items.map((s) => `
           <div class="skill">
-            <span class="skill-icon${s.icon ? "" : " is-empty"}">${s.icon ? `<img src="${esc(s.icon)}" alt="" loading="lazy" />` : ""}<span class="skill-fallback">${esc(initials(s.name))}</span></span>
-            <span><strong>${esc(s.name)}</strong><small>${esc(t(s.note))}</small></span>
+            <span class="skill-icon${s.icon ? "" : " is-empty"}">${s.icon ? `<img src="${esc(s.icon)}" alt="" loading="lazy" />` : ""}<span class="skill-fallback">${esc(s.badge || initials(t(s.name)))}</span></span>
+            <span><strong>${esc(t(s.name))}</strong>${t(s.note) ? `<small>${esc(t(s.note))}</small>` : ""}</span>
           </div>`).join("")}
       </div>`).join("");
   }
@@ -291,6 +300,14 @@
     if (P.phone) rows.push(`<li><a href="tel:${esc(P.phone.replace(/\s+/g, ""))}">✆ ${esc(P.phone)}</a></li>`);
     $("#contactList").innerHTML = rows.join("");
     $("#socials").innerHTML = P.socials.filter((s) => s.url).map((s) => `<a class="social" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join("");
+    // Formulaire masqué tant que Formspree n'est pas configuré
+    const id = (P.formspreeId || "").trim();
+    const configured = id && id !== "VOTRE_ID_FORMSPREE";
+    const contactForm = $("#contactForm");
+    if (contactForm) {
+      contactForm.hidden = !configured;
+      contactForm.closest(".contact-grid")?.classList.toggle("no-form", !configured);
+    }
   }
 
   const form = $("#contactForm");
@@ -323,7 +340,10 @@
   function renderWhoami() {
     const photo = $("#whoamiPhoto"); if (!photo) return;
     const A = SITE.aboutPage;
-    photo.innerHTML = media(P.photo, { ratio: "4/5", alt: fullName() });
+    photo.innerHTML = media(P.photo, { ratio: "4/5", alt: fullName(), eager: true });
+
+    const q = $("#qualities");
+    if (q) q.innerHTML = (A.qualities || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("");
 
     const favGame = A.gameCategories.flatMap((c) => c.games).find((g) => g.favorite);
     $("#favBanner").innerHTML = `

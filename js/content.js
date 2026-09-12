@@ -14,178 +14,236 @@ const SITE = {
 
   /* ---------- IDENTITÉ ---------- */
   profile: {
-    firstName: "Prénom",
-    lastName: "Nom",
-    initials: "PN",
-    role: { fr: "Game Designer", en: "Game Designer" },
+    firstName: "Gabriel",
+    lastName: "Michaud",
+    initials: "GM",
     tagline: {
-      fr: "Une phrase qui résume ce que tu fais. Ex : je conçois et programme des mécaniques de gameplay.",
-      en: "One sentence that sums up what you do. E.g. I design and build gameplay mechanics.",
+      fr: "Je crée des jeux vidéo, du game design à la programmation, en passant par la musique et la 3D.",
+      en: "I make video games, from game design and programming to music and 3D.",
     },
-    availability: {
-      fr: "Disponible pour un stage",
-      en: "Open to internships",
-    },
-    location: "Ville, Pays",
-    email: "ton.email@exemple.com",
-    phone: "", // ex : "06 00 00 00 00" — laisse vide pour ne pas l'afficher
+    availability: "", // ex : { fr: "Disponible pour un stage", en: "Open to internships" }
+    location: "Lyon, France",
+    email: "gabrielmimi74@gmail.com",
+    phone: "", // ex : "06 00 00 00 00" — attention, le site est public
     photo: "assets/images/photo.jpg",
-    cv: "assets/cv.pdf", // dépose ton CV à cet emplacement
-    // Crée un formulaire gratuit sur https://formspree.io puis colle son identifiant ici (ex : "xzdqvkrq")
+    cv: "assets/cv.pdf",
+    // Crée un formulaire gratuit sur https://formspree.io puis colle son identifiant ici (ex : "xzdqvkrq").
+    // Tant que ce n'est pas fait, le formulaire est masqué et seul l'email s'affiche.
     formspreeId: "VOTRE_ID_FORMSPREE",
     socials: [
-      { label: "LinkedIn", url: "https://www.linkedin.com/in/ton-profil" },
-      { label: "itch.io", url: "https://ton-pseudo.itch.io" },
-      { label: "GitHub", url: "https://github.com/ton-pseudo" },
-      { label: "Instagram", url: "" },
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/gabriel-michaud-565798241" },
+      { label: "GitHub", url: "https://github.com/Gabi744" },
+      { label: "itch.io", url: "" },
     ],
   },
 
   /* ---------- À PROPOS ---------- */
   about: {
     title: {
-      fr: "Passionné par le game design, le level design et la programmation gameplay",
-      en: "Passionate about game design, level design and gameplay programming",
+      fr: "Passionné par la création de jeux vidéo, sous toutes leurs formes",
+      en: "Passionate about making video games, in every form",
     },
     paragraphs: [
       {
-        fr: "Présente-toi ici : ta formation, ton école, ta spécialité. Ex : étudiant en Bachelor Game Design, je me spécialise dans…",
-        en: "Introduce yourself here: your studies, your school, your specialty.",
+        fr: "Je m'appelle Gabriel et je suis passionné par la création de jeux vidéo, que ce soit à travers le game design, la programmation, la musique ou la 3D.",
+        en: "My name is Gabriel and I'm passionate about making video games, whether through game design, programming, music or 3D.",
       },
       {
-        fr: "Parle de ce que tu aimes concevoir et de ta vision du jeu vidéo.",
-        en: "Talk about what you love to design and your vision of games.",
+        fr: "Formé à l'ICAN Lyon (Bachelor de game design, 2023–2026), j'ai travaillé sur des projets très variés : souls-like, party game en coopération, horreur psychologique, FPS nerveux, jeu web…",
+        en: "Trained at ICAN Lyon (Bachelor in Game Design, 2023–2026), I've worked on very different projects: a souls-like, a co-op party game, psychological horror, a fast FPS, a web game…",
+      },
+      {
+        fr: "Créatif, curieux et motivé, je cherche toujours à apprendre et à créer des expériences uniques !",
+        en: "Creative, curious and motivated, I'm always looking to learn and create unique experiences!",
       },
     ],
-    tags: ["Gameplay Programming", "Level Design", "Game Design", "Prototypage"],
+    tags: ["Game Design", { fr: "Programmation", en: "Programming" }, "Level Design", { fr: "Prototypage", en: "Prototyping" }, "Sound Design", "3D"],
     stats: [
       { value: "5", label: { fr: "projets de jeux", en: "game projects" } },
-      { value: "3", label: { fr: "ans de formation", en: "years of study" } },
-      { value: "2", label: { fr: "stages", en: "internships" } },
+      { value: "4", label: { fr: "expériences pro", en: "work experiences" } },
+      { value: "C1", label: { fr: "en anglais", en: "English level" } },
     ],
   },
 
   /* ---------- PROJETS ----------
-     featured: true  → affiché en grand en premier
+     roles    : ce que tu as fait sur le projet (sert aussi aux filtres)
+     featured : true → affiché en grand en premier
      video / contribVideo : lien YouTube au format "embed" (https://www.youtube.com/embed/XXXX)
-     timecodes : chapitres cliquables de la vidéo de contributions            */
+     timecodes : chapitres cliquables de la vidéo de contributions, ex :
+       timecodes: [{ time: "00:00", label: "Introduction" }, { time: "01:15", label: "Système de combat" }]
+     gallery : images supplémentaires affichées en carrousel                     */
   projects: [
     {
-      id: "projet-1",
+      id: "ira",
       featured: true,
-      title: "Nom du projet 1",
+      title: "Ira",
       year: "2025–2026",
       duration: { fr: "8 mois", en: "8 months" },
-      genre: { fr: "Souls-like 3D", en: "3D Souls-like" },
+      genre: { fr: "Aventure souls-like", en: "Souls-like adventure" },
       engine: "Unreal Engine 5",
-      role: { fr: "Gameplay Programmer", en: "Gameplay Programmer" },
+      roles: [{ fr: "Programmeur", en: "Programmer" }, "Sound Designer"],
       team: { fr: "8 personnes", en: "8 people" },
-      tags: ["Unreal Engine 5", "Blueprint", "Combat"],
-      thumb: "assets/images/projets/projet-1.jpg",
+      tags: ["Unreal Engine 5", "Blueprint", "Sound Design"],
+      thumb: "assets/images/projets/ira.png",
       summary: {
-        fr: "Deux ou trois phrases qui donnent envie : le pitch du jeu et ton rôle.",
-        en: "Two or three catchy sentences: the game's pitch and your role.",
+        fr: "Un jeu d'aventure souls-like dans un empire dystopique à l'esthétique romaine, réalisé en équipe à l'ICAN.",
+        en: "A souls-like adventure game set in a Roman-inspired dystopian empire, made as a team at ICAN.",
       },
       description: {
-        fr: "Description détaillée du projet : l'univers, les mécaniques principales, les défis.\n\nUn deuxième paragraphe sur ce que tu as appris ou ce dont tu es fier.",
-        en: "Detailed description: the world, core mechanics, challenges.\n\nA second paragraph about what you learned or are proud of.",
+        fr: "Dans l'empire de Deador, une dictature à l'esthétique romaine bâtie sur les ruines des Solari, Kaia Valdrik, dernière héritière de sa lignée, traque le Voidwalker, la créature qui a massacré sa famille.\n\nSur ce projet, j'ai travaillé comme programmeur et sound designer. (À compléter : décris tes contributions, par exemple les systèmes programmés, les sons et les ambiances créés.)",
+        en: "In the empire of Deador, a Roman-inspired dictatorship built on the ruins of the Solari, Kaia Valdrik, last heir of her lineage, hunts the Voidwalker, the creature that slaughtered her family.\n\nOn this project, I worked as a programmer and sound designer. (To complete: describe your contributions.)",
       },
-      video: "", // bande-annonce, ex : "https://www.youtube.com/embed/XXXX"
-      contribVideo: "", // vidéo de tes contributions
-      timecodes: [
-        { time: "00:00", label: { fr: "Introduction", en: "Introduction" } },
-        { time: "00:30", label: { fr: "Déplacements", en: "Movement" } },
-        { time: "01:15", label: { fr: "Système de combat", en: "Combat system" } },
-      ],
+      video: "https://www.youtube.com/embed/Wy5PBMCPGxM",
+      contribVideo: "",
+      timecodes: [],
       gallery: {
         title: { fr: "Galerie", en: "Gallery" },
-        text: { fr: "Captures du projet ou de ton travail (level design, props, UI…).", en: "Screenshots of the project or your work." },
+        text: "",
         images: [
-          "assets/images/projets/projet-1-galerie-1.jpg",
-          "assets/images/projets/projet-1-galerie-2.jpg",
-          "assets/images/projets/projet-1-galerie-3.jpg",
+          "assets/images/projets/ira-1.jpg",
+          "assets/images/projets/ira-2.jpg",
+          "assets/images/projets/ira-3.jpg",
         ],
       },
       link: "",
-      linkLabel: { fr: "Télécharger le build", en: "Download the build" },
+      linkLabel: { fr: "Télécharger le jeu", en: "Download the game" },
     },
     {
-      id: "projet-2",
-      title: "Nom du projet 2",
-      year: "2025",
-      duration: { fr: "4 mois", en: "4 months" },
-      genre: { fr: "Platformer 3D", en: "3D Platformer" },
-      engine: "Unity 6",
-      role: { fr: "Gameplay Programmer", en: "Gameplay Programmer" },
+      id: "crazy-market",
+      title: "Crazy Market",
+      year: "",
+      duration: "",
+      genre: { fr: "Party game en co-op", en: "Co-op party game" },
+      engine: "",
+      roles: [{ fr: "Programmeur", en: "Programmer" }, "Game Designer"],
       team: "",
-      tags: ["Unity 6", "C#", "Cartoon"],
-      thumb: "assets/images/projets/projet-2.jpg",
-      summary: { fr: "Le pitch du projet en quelques lignes.", en: "The project's pitch in a few lines." },
-      description: { fr: "Description détaillée du projet.", en: "Detailed project description." },
+      tags: ["Party game", "Co-op"],
+      thumb: "assets/images/projets/crazy-market.jpg",
+      summary: {
+        fr: "Un party game en coopération. (À compléter : le principe du jeu en une ou deux phrases.)",
+        en: "A co-op party game. (To complete: the game's concept in one or two sentences.)",
+      },
+      description: {
+        fr: "À compléter : l'idée du jeu, ses mécaniques principales et ce que tu as fait en tant que programmeur et game designer.",
+        en: "To complete: the game's idea, core mechanics and what you did as programmer and game designer.",
+      },
       video: "",
       link: "",
-      linkLabel: { fr: "Voir sur itch.io", en: "View on itch.io" },
+      linkLabel: { fr: "Voir le jeu", en: "View the game" },
     },
     {
-      id: "projet-3",
-      title: "Nom du projet 3",
-      year: "2024",
-      duration: { fr: "4 mois", en: "4 months" },
-      genre: { fr: "Platformer 2D", en: "2D Platformer" },
-      engine: "Unity 6",
-      role: { fr: "Gameplay + Level Design", en: "Gameplay + Level Design" },
+      id: "alone",
+      title: "Alone",
+      year: "",
+      duration: "",
+      genre: { fr: "Horreur psychologique", en: "Psychological horror" },
+      engine: "",
+      roles: [{ fr: "Programmeur", en: "Programmer" }, "Game Designer", { fr: "Artiste 3D", en: "3D Artist" }],
       team: "",
-      tags: ["Unity 6", "Level Design"],
-      thumb: "assets/images/projets/projet-3.jpg",
-      summary: { fr: "Le pitch du projet en quelques lignes.", en: "The project's pitch in a few lines." },
-      description: { fr: "Description détaillée du projet.", en: "Detailed project description." },
+      tags: [{ fr: "Horreur", en: "Horror" }, "3D"],
+      thumb: "assets/images/projets/alone.jpg",
+      summary: {
+        fr: "Un jeu d'horreur psychologique. (À compléter : le principe du jeu en une ou deux phrases.)",
+        en: "A psychological horror game. (To complete: the game's concept in one or two sentences.)",
+      },
+      description: {
+        fr: "À compléter : l'ambiance, les mécaniques et ce que tu as fait (programmation, game design, modélisation 3D).",
+        en: "To complete: the atmosphere, mechanics and what you did (programming, game design, 3D modeling).",
+      },
       video: "",
       link: "",
-      linkLabel: { fr: "Voir sur itch.io", en: "View on itch.io" },
+      linkLabel: { fr: "Voir le jeu", en: "View the game" },
     },
     {
-      id: "projet-4",
-      title: "Nom du projet 4",
-      year: "2024",
-      duration: { fr: "1 semaine", en: "1 week" },
-      genre: { fr: "Game jam", en: "Game jam" },
-      engine: "Godot",
-      role: { fr: "Game Design", en: "Game Design" },
+      id: "reflekt",
+      title: "Reflekt",
+      year: "2026",
+      duration: { fr: "2 mois", en: "2 months" },
+      genre: "Fast FPS",
+      engine: "",
+      roles: ["Game Designer", { fr: "Programmeur", en: "Programmer" }],
       team: "",
-      tags: ["Godot", "Game Jam"],
-      thumb: "assets/images/projets/projet-4.jpg",
-      summary: { fr: "Le pitch du projet en quelques lignes.", en: "The project's pitch in a few lines." },
-      description: { fr: "Description détaillée du projet.", en: "Detailed project description." },
+      tags: ["FPS", { fr: "Stage", en: "Internship" }],
+      thumb: "assets/images/projets/reflekt.jpg",
+      summary: {
+        fr: "Un jeu de type fast FPS qui exige de bons réflexes, créé pendant un stage chez Fanny PASSET.",
+        en: "A fast-paced FPS that demands sharp reflexes, made during an internship with Fanny PASSET.",
+      },
+      description: {
+        fr: "Reflekt est un jeu de type fast FPS qui exige de bons réflexes, conçu et programmé pendant un stage de deux mois.\n\nÀ compléter : les mécaniques, le rythme du jeu et tes choix de game design.",
+        en: "Reflekt is a fast-paced FPS that demands sharp reflexes, designed and programmed during a two-month internship.\n\nTo complete: mechanics, pacing and your game design choices.",
+      },
       video: "",
       link: "",
-      linkLabel: { fr: "Voir sur itch.io", en: "View on itch.io" },
+      linkLabel: { fr: "Voir le jeu", en: "View the game" },
+    },
+    {
+      id: "cox-attitude",
+      title: "Cox'Attitude",
+      year: "2026",
+      duration: { fr: "2 mois", en: "2 months" },
+      genre: { fr: "Jeu web", en: "Web game" },
+      engine: "",
+      roles: ["Game Designer", { fr: "Programmeur", en: "Programmer" }],
+      team: "",
+      tags: ["Webapp", { fr: "Stage", en: "Internship" }],
+      thumb: "assets/images/projets/cox-attitude.jpg",
+      summary: {
+        fr: "Un jeu webapp créé pendant un stage, dans le thème de l'association Cox'Attitude.",
+        en: "A web app game made during an internship, themed around the Cox'Attitude association.",
+      },
+      description: {
+        fr: "Création d'un jeu webapp dans le thème de l'association Cox'Attitude, pendant un stage de deux mois.\n\nÀ compléter : le principe du jeu et ce que tu as réalisé.",
+        en: "A web app game themed around the Cox'Attitude association, made during a two-month internship.\n\nTo complete: the game's concept and what you built.",
+      },
+      video: "",
+      link: "https://gabi744.github.io/CoxAttitude/",
+      linkLabel: { fr: "Jouer en ligne", en: "Play online" },
     },
   ],
 
   /* ---------- COMPÉTENCES ----------
-     icon : image dans assets/icons/ (si absente, les initiales s'affichent) */
+     icon  : image dans assets/icons/ (si absente, le badge ou les initiales s'affichent)
+     display: "tags" → affiche la catégorie sous forme d'étiquettes             */
   skills: [
     {
-      category: { fr: "Moteurs", en: "Engines" },
+      category: { fr: "Programmation", en: "Programming" },
       items: [
-        { name: "Unreal Engine 5", note: "Blueprint", icon: "assets/icons/unreal.png" },
-        { name: "Unity", note: "C#", icon: "assets/icons/unity.png" },
+        { name: "Unity", icon: "assets/icons/unity.png" },
+        { name: "Unreal Engine", icon: "assets/icons/unreal.png" },
+        { name: "Blueprint", badge: "BP" },
+        { name: "C#", icon: "assets/icons/csharp.png" },
+        { name: "C++", badge: "C++" },
+        { name: "HTML", badge: "</>" },
       ],
     },
     {
-      category: { fr: "Code", en: "Code" },
+      category: "Game Design",
+      display: "tags",
       items: [
-        { name: "C#", note: { fr: "Programmation", en: "Programming" }, icon: "assets/icons/csharp.png" },
-        { name: "Visual Studio", note: "IDE", icon: "assets/icons/visual-studio.png" },
-        { name: "GitHub", note: { fr: "Collaboration", en: "Collaboration" }, icon: "assets/icons/github.png" },
+        { name: "Game Mechanics" },
+        { name: "Level Design" },
+        { name: { fr: "Prototypage", en: "Prototyping" } },
+        { name: "UX/UI" },
+        { name: "Game Feel" },
       ],
     },
     {
-      category: { fr: "Création", en: "Creative" },
+      category: { fr: "Logiciels & outils", en: "Software & tools" },
       items: [
-        { name: "Blender", note: { fr: "Modélisation 3D", en: "3D modeling" }, icon: "assets/icons/blender.png" },
-        { name: "Photoshop", note: "Adobe", icon: "assets/icons/photoshop.png" },
-        { name: "Reaper", note: "Audio", icon: "assets/icons/reaper.png" },
+        { name: "Suite Adobe", icon: "assets/icons/adobe.png" },
+        { name: "Blender", icon: "assets/icons/blender.png" },
+        { name: "Figma", badge: "Fi" },
+        { name: "GitHub", icon: "assets/icons/github.png" },
+        { name: "Notion", badge: "N" },
+        { name: "Suite Office", badge: "Of" },
+      ],
+    },
+    {
+      category: { fr: "Langues", en: "Languages" },
+      items: [
+        { name: { fr: "Français", en: "French" }, note: { fr: "Langue maternelle", en: "Native" }, badge: "FR" },
+        { name: { fr: "Anglais", en: "English" }, note: { fr: "C1 — expérimenté", en: "C1 — advanced" }, badge: "EN" },
       ],
     },
   ],
@@ -193,51 +251,70 @@ const SITE = {
   /* ---------- PARCOURS ---------- */
   education: [
     {
-      date: { fr: "2023 — Présent", en: "2023 — Present" },
-      title: { fr: "Bachelor Game Design", en: "Bachelor in Game Design" },
-      place: { fr: "Nom de l'école, Ville", en: "School name, City" },
-      text: { fr: "Une mention ou un détail (ex : major de promo).", en: "An honor or detail." },
+      date: "2023 — 2026",
+      title: { fr: "Bachelor de game design", en: "Bachelor in Game Design" },
+      place: "ICAN, Lyon",
+      text: "",
     },
     {
       date: "2020 — 2023",
-      title: { fr: "Baccalauréat", en: "High school diploma" },
-      place: { fr: "Lycée, Ville", en: "High school, City" },
+      title: { fr: "Bac général", en: "High school diploma (Baccalauréat)" },
+      place: "Lycée de la Versoie, Thonon-les-Bains",
       text: "",
     },
   ],
   experience: [
     {
-      date: { fr: "En cours", en: "Ongoing" },
-      title: { fr: "Gameplay Programmer — Stage", en: "Gameplay Programmer — Internship" },
-      place: { fr: "Nom du studio", en: "Studio name" },
-      text: { fr: "Ce que tu y fais.", en: "What you do there." },
+      date: { fr: "2026 · 2 mois", en: "2026 · 2 months" },
+      title: { fr: "Game Designer, programmeur — Stage", en: "Game Designer, programmer — Internship" },
+      place: "Cox'Attitude",
+      text: { fr: "Création d'un jeu webapp dans le thème de l'association Cox'Attitude.", en: "Created a web app game themed around the Cox'Attitude association." },
     },
     {
-      date: "2025",
-      title: { fr: "Game Designer — Stage", en: "Game Designer — Internship" },
-      place: { fr: "Nom du studio", en: "Studio name" },
-      text: { fr: "Level design, game design et programmation.", en: "Level design, game design and programming." },
+      date: { fr: "2026 · 2 mois", en: "2026 · 2 months" },
+      title: { fr: "Game Designer, programmeur — Stage", en: "Game Designer, programmer — Internship" },
+      place: "Fanny PASSET",
+      text: { fr: "Création de Reflekt, un jeu de type fast FPS qui exige de bons réflexes.", en: "Created Reflekt, a fast-paced FPS that demands sharp reflexes." },
+    },
+    {
+      date: { fr: "2025 · 2 mois", en: "2025 · 2 months" },
+      title: { fr: "Concepteur en communication graphique et numérique — Stage", en: "Graphic & digital communication designer — Internship" },
+      place: "Starev Editions",
+      text: { fr: "Création d'illustrations et d'animations à visée commerciale.", en: "Created illustrations and animations for commercial use." },
+    },
+    {
+      date: { fr: "2024 · 4 mois", en: "2024 · 4 months" },
+      title: { fr: "Opérateur de production", en: "Production operator" },
+      place: "Plastique Des Neiges",
+      text: { fr: "Maintenance des machines et préparation de pièces en plastique pour les clients.", en: "Machine maintenance and preparation of plastic parts for customers." },
     },
   ],
 
   /* ---------- PAGE « QUI SUIS-JE ? » ---------- */
   aboutPage: {
     intro: {
-      fr: "Présente-toi plus personnellement : ton rapport aux jeux vidéo, ce qui te fait vibrer, qui tu es en dehors des études.",
-      en: "Introduce yourself more personally: your relationship with games, what drives you, who you are outside school.",
+      fr: "Je m'appelle Gabriel et je suis passionné par les jeux vidéo. J'aime tout ce qui se rapporte à la création artistique, que ce soit à travers le game design, la musique ou la 3D. En dehors des écrans, je m'intéresse aussi à l'astronomie et au sport.",
+      en: "My name is Gabriel and I'm passionate about video games. I love everything related to artistic creation, whether through game design, music or 3D. Away from screens, I'm also into astronomy and sports.",
     },
+    qualities: [
+      { fr: "Autonome", en: "Self-driven" },
+      { fr: "Créatif", en: "Creative" },
+      { fr: "Curieux", en: "Curious" },
+      { fr: "Travail en équipe", en: "Team player" },
+    ],
     favorite: {
       title: "Ton jeu préféré",
       text: {
-        fr: "Explique pourquoi c'est ton jeu préféré de tous les temps.",
-        en: "Explain why it's your all-time favorite game.",
+        fr: "À compléter : explique pourquoi c'est ton jeu préféré de tous les temps.",
+        en: "To complete: explain why it's your all-time favorite game.",
       },
     },
     /* Astuce : pour un jeu Steam, tu peux utiliser directement l'image officielle :
-       https://cdn.cloudflare.steamstatic.com/steam/apps/<ID_STEAM>/library_600x900.jpg */
+       https://cdn.cloudflare.steamstatic.com/steam/apps/<ID_STEAM>/library_600x900.jpg
+       favorite: true → le jeu apparaît avec une étoile et dans la bannière « jeu préféré » */
     gameCategories: [
       {
-        title: { fr: "Catégorie 1 (ex : Survie & Exploration)", en: "Category 1 (e.g. Survival)" },
+        title: { fr: "Catégorie 1 (ex : Aventure)", en: "Category 1 (e.g. Adventure)" },
         games: [
           { name: "Jeu 1", cover: "assets/images/jeux/jeu-1.jpg", favorite: true },
           { name: "Jeu 2", cover: "assets/images/jeux/jeu-2.jpg" },
@@ -246,26 +323,19 @@ const SITE = {
         ],
       },
       {
-        title: { fr: "Catégorie 2 (ex : Souls-like & Action)", en: "Category 2 (e.g. Souls-like)" },
+        title: { fr: "Catégorie 2 (ex : Action)", en: "Category 2 (e.g. Action)" },
         games: [
           { name: "Jeu 5", cover: "assets/images/jeux/jeu-5.jpg" },
           { name: "Jeu 6", cover: "assets/images/jeux/jeu-6.jpg" },
           { name: "Jeu 7", cover: "assets/images/jeux/jeu-7.jpg" },
         ],
       },
-      {
-        title: { fr: "Catégorie 3 (ex : Aventure & Narratif)", en: "Category 3 (e.g. Adventure)" },
-        games: [
-          { name: "Jeu 8", cover: "assets/images/jeux/jeu-8.jpg" },
-          { name: "Jeu 9", cover: "assets/images/jeux/jeu-9.jpg" },
-          { name: "Jeu 10", cover: "assets/images/jeux/jeu-10.jpg" },
-        ],
-      },
     ],
     hobbies: [
-      { icon: "🎮", title: { fr: "Loisir 1", en: "Hobby 1" }, text: { fr: "Décris ce loisir en une ou deux phrases.", en: "Describe this hobby in one or two sentences." } },
-      { icon: "🏋️", title: { fr: "Loisir 2", en: "Hobby 2" }, text: { fr: "Décris ce loisir en une ou deux phrases.", en: "Describe this hobby in one or two sentences." } },
-      { icon: "🎧", title: { fr: "Loisir 3", en: "Hobby 3" }, text: { fr: "Décris ce loisir en une ou deux phrases.", en: "Describe this hobby in one or two sentences." } },
+      { icon: "🔭", title: { fr: "Astronomie", en: "Astronomy" }, text: { fr: "À compléter : ce qui te passionne dans l'astronomie.", en: "To complete: what fascinates you about astronomy." } },
+      { icon: "🎵", title: { fr: "Musique", en: "Music" }, text: { fr: "À compléter : ce que tu écoutes, joues ou composes.", en: "To complete: what you listen to, play or compose." } },
+      { icon: "🏃", title: "Sport", text: { fr: "À compléter : les sports que tu pratiques ou suis.", en: "To complete: the sports you play or follow." } },
+      { icon: "🎮", title: { fr: "Jeux vidéo", en: "Video games" }, text: { fr: "À compléter : les jeux et les genres qui t'ont marqué.", en: "To complete: the games and genres that shaped you." } },
     ],
   },
 };
@@ -285,7 +355,7 @@ const UI = {
     "hero.cv": "Télécharger mon CV",
     "about.eyebrow": "01 — À propos",
     "projects.eyebrow": "02 — Travaux",
-    "projects.title": "Projets sélectionnés",
+    "projects.title": "Projets",
     "projects.all": "Tous",
     "projects.open": "Voir le projet",
     "projects.featured": "Projet phare",
@@ -296,8 +366,8 @@ const UI = {
     "path.education": "Formation",
     "path.experience": "Expériences",
     "contact.eyebrow": "05 — Contact",
-    "contact.title": "Parlons de ton prochain projet",
-    "contact.text": "Disponible pour des collaborations, des stages ou simplement pour discuter de jeux.",
+    "contact.title": "Parlons de votre projet",
+    "contact.text": "Une question, une opportunité ou un projet ? N'hésitez pas à m'écrire.",
     "form.name": "Nom",
     "form.email": "Email",
     "form.subject": "Sujet",
@@ -305,12 +375,12 @@ const UI = {
     "form.send": "Envoyer le message",
     "form.sending": "Envoi…",
     "form.sent": "✓ Message envoyé !",
-    "form.error": "Erreur, réessaie ou écris-moi par email.",
+    "form.error": "Erreur, réessayez ou écrivez-moi par email.",
     "form.notConfigured": "Formulaire pas encore configuré (voir content.js)",
     "detail.duration": "Durée",
     "detail.year": "Période",
     "detail.engine": "Moteur",
-    "detail.role": "Rôle",
+    "detail.role": "Rôles",
     "detail.team": "Équipe",
     "detail.genre": "Genre",
     "detail.contrib": "Mes contributions",
@@ -341,7 +411,7 @@ const UI = {
     "hero.cv": "Download my CV",
     "about.eyebrow": "01 — About",
     "projects.eyebrow": "02 — Work",
-    "projects.title": "Selected projects",
+    "projects.title": "Projects",
     "projects.all": "All",
     "projects.open": "View project",
     "projects.featured": "Featured project",
@@ -352,8 +422,8 @@ const UI = {
     "path.education": "Education",
     "path.experience": "Experience",
     "contact.eyebrow": "05 — Contact",
-    "contact.title": "Let's talk about your next project",
-    "contact.text": "Open to collaborations, internships, or just a chat about games.",
+    "contact.title": "Let's talk about your project",
+    "contact.text": "A question, an opportunity or a project? Feel free to get in touch.",
     "form.name": "Name",
     "form.email": "Email",
     "form.subject": "Subject",
@@ -366,7 +436,7 @@ const UI = {
     "detail.duration": "Duration",
     "detail.year": "Period",
     "detail.engine": "Engine",
-    "detail.role": "Role",
+    "detail.role": "Roles",
     "detail.team": "Team",
     "detail.genre": "Genre",
     "detail.contrib": "My contributions",

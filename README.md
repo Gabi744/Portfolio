@@ -17,7 +17,7 @@ assets/             → tes images, icônes et ton CV
 
 ## 1. Personnaliser le contenu
 
-Ouvre **`js/content.js`** et remplace les textes d'exemple (« Prénom », « Nom du projet 1 »…).
+Ouvre **`js/content.js`** et complète les textes marqués « À compléter ».
 
 - Un texte peut être simple : `title: "Mon jeu"`,
   ou bilingue : `title: { fr: "Mon jeu", en: "My game" }`.
@@ -33,8 +33,8 @@ Dépose simplement ton fichier à cet endroit (même nom, même extension) et il
 | Élément | Chemin par défaut |
 |---|---|
 | Photo de profil | `assets/images/photo.jpg` |
-| Vignettes des projets | `assets/images/projets/projet-1.jpg`, `projet-2.jpg`… |
-| Galerie du projet 1 | `assets/images/projets/projet-1-galerie-1.jpg`… |
+| Vignettes des projets | `assets/images/projets/crazy-market.jpg`, `alone.jpg`, `reflekt.jpg`, `cox-attitude.jpg` |
+| Galerie d'Ira | `assets/images/projets/ira-1.jpg`, `ira-2.jpg`, `ira-3.jpg` |
 | Jaquettes des jeux | `assets/images/jeux/jeu-1.jpg`… |
 | Icônes des logiciels | `assets/icons/unreal.png`, `unity.png`… (sinon les initiales s'affichent) |
 | CV | `assets/cv.pdf` |
