@@ -277,7 +277,7 @@
           ? `<div class="tags">${c.items.map((s) => `<span class="tag">${esc(t(s.name))}</span>`).join("")}</div>`
           : c.items.map((s) => `
           <div class="skill">
-            <span class="skill-icon${s.icon ? "" : " is-empty"}">${s.icon ? `<img src="${esc(s.icon)}" alt="" loading="lazy" />` : ""}<span class="skill-fallback">${esc(s.badge || initials(t(s.name)))}</span></span>
+            <span class="skill-icon${s.icon ? "" : " is-empty"}${s.mono ? " mono" : ""}">${s.icon ? `<img src="${esc(s.icon)}" alt="" loading="lazy" />` : ""}<span class="skill-fallback">${esc(s.badge || initials(t(s.name)))}</span></span>
             <span><strong>${esc(t(s.name))}</strong>${t(s.note) ? `<small>${esc(t(s.note))}</small>` : ""}</span>
           </div>`).join("")}
       </div>`).join("");
@@ -299,7 +299,6 @@
     const mail = $("#contactEmail"); if (!mail) return;
     mail.textContent = P.email; mail.href = `mailto:${P.email}`;
     const rows = [];
-    if (P.location) rows.push(`<li>◎ ${esc(P.location)}</li>`);
     if (P.phone) rows.push(`<li><a href="tel:${esc(P.phone.replace(/\s+/g, ""))}">✆ ${esc(P.phone)}</a></li>`);
     $("#contactList").innerHTML = rows.join("");
     $("#socials").innerHTML = P.socials.filter((s) => s.url).map((s) => `<a class="social" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join("");
@@ -340,6 +339,9 @@
     const photo = $("#whoamiPhoto"); if (!photo) return;
     const A = SITE.aboutPage;
     photo.innerHTML = media(P.photo, { ratio: "4/5", alt: fullName(), eager: true });
+
+    const intro = $("#whoamiIntro");
+    if (intro) intro.innerHTML = t(A.intro).split(/\n\s*\n/).map((x) => `<p>${esc(x.trim())}</p>`).join("");
 
     const q = $("#qualities");
     if (q) q.innerHTML = (A.qualities || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("");

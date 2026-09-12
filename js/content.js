@@ -115,7 +115,7 @@ const SITE = {
       team: "",
       tags: ["Party game", "Co-op"],
       // Image tirée de la vidéo YouTube — remplace par "assets/images/projets/crazy-market.jpg" si tu préfères ta propre image
-      thumb: "https://i.ytimg.com/vi/Q-eBa41Cv_s/maxresdefault.jpg",
+      thumb: "https://i.ytimg.com/vi/2Gw407vtmE0/maxresdefault.jpg",
       summary: {
         fr: "Un party game en coopération. (À compléter : le principe du jeu en une ou deux phrases.)",
         en: "A co-op party game. (To complete: the game's concept in one or two sentences.)",
@@ -124,7 +124,7 @@ const SITE = {
         fr: "À compléter : l'idée du jeu, ses mécaniques principales et ce que tu as fait en tant que programmeur et game designer.",
         en: "To complete: the game's idea, core mechanics and what you did as programmer and game designer.",
       },
-      video: "https://www.youtube.com/embed/Q-eBa41Cv_s",
+      video: "https://www.youtube.com/embed/2Gw407vtmE0",
       link: "",
       linkLabel: { fr: "Voir le jeu", en: "View the game" },
     },
@@ -200,14 +200,15 @@ const SITE = {
   ],
 
   /* ---------- COMPÉTENCES ----------
-     icon  : image dans assets/icons/ (si absente, le badge ou les initiales s'affichent)
+     icon  : image dans assets/icons/ ou lien (si absente, le badge ou les initiales s'affichent)
+     mono  : true → logo noir, affiché en blanc en thème sombre
      display: "tags" → affiche la catégorie sous forme d'étiquettes             */
   skills: [
     {
       category: { fr: "Programmation", en: "Programming" },
       items: [
-        { name: "Unity", icon: `${DEVICON}/unity/unity-original.svg`, badge: "U" },
-        { name: "Unreal Engine", icon: `${DEVICON}/unrealengine/unrealengine-original.svg`, badge: "UE" },
+        { name: "Unity", icon: `${DEVICON}/unity/unity-original.svg`, badge: "U", mono: true },
+        { name: "Unreal Engine", icon: `${DEVICON}/unrealengine/unrealengine-original.svg`, badge: "UE", mono: true },
         { name: "Blueprint", badge: "BP" }, // pas de logo officiel
         { name: "C#", icon: "assets/icons/csharp.png" },
         { name: "C++", icon: `${DEVICON}/cplusplus/cplusplus-original.svg`, badge: "C++" },
@@ -231,9 +232,9 @@ const SITE = {
         { name: "Suite Adobe", icon: "assets/icons/adobe.png" },
         { name: "Blender", icon: "assets/icons/blender.png" },
         { name: "Figma", icon: `${DEVICON}/figma/figma-original.svg`, badge: "Fi" },
-        { name: "GitHub", icon: `${DEVICON}/github/github-original.svg`, badge: "GH" },
-        { name: "Notion", icon: `${DEVICON}/notion/notion-original.svg`, badge: "N" },
-        { name: "Suite Office", icon: "https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/microsoftoffice.svg", badge: "Of" },
+        { name: "GitHub", icon: `${DEVICON}/github/github-original.svg`, badge: "GH", mono: true },
+        { name: "Notion", icon: `${DEVICON}/notion/notion-original.svg`, badge: "N", mono: true },
+        { name: "Suite Office", icon: "https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/microsoftoffice.svg", badge: "Of", mono: true },
       ],
     },
     {
@@ -289,9 +290,10 @@ const SITE = {
 
   /* ---------- PAGE « QUI SUIS-JE ? » ---------- */
   aboutPage: {
+    // Un paragraphe par bloc, séparés par une ligne vide (\n\n)
     intro: {
-      fr: "Je m'appelle Gabriel et je suis passionné par les jeux vidéo. J'aime tout ce qui se rapporte à la création artistique, que ce soit à travers le game design, la musique ou la 3D. En dehors des écrans, je m'intéresse aussi à l'astronomie et au sport.",
-      en: "My name is Gabriel and I'm passionate about video games. I love everything related to artistic creation, whether through game design, music or 3D. Away from screens, I'm also into astronomy and sports.",
+      fr: "Je m'appelle Gabriel et je suis passionné par la création de jeux vidéo, que ce soit à travers le game design, la programmation, la musique ou la 3D.\n\nFormé à l'ICAN Lyon (Bachelor de game design, 2023–2026), j'ai travaillé sur des projets très variés : souls-like, party game en coopération, horreur psychologique, FPS nerveux, jeu web…\n\nCréatif, curieux et motivé, je cherche toujours à apprendre et à créer des expériences uniques ! En dehors des écrans, je m'intéresse aussi à l'astronomie et au sport.",
+      en: "My name is Gabriel and I'm passionate about making video games, whether through game design, programming, music or 3D.\n\nTrained at ICAN Lyon (Bachelor in Game Design, 2023–2026), I've worked on very different projects: a souls-like, a co-op party game, psychological horror, a fast FPS, a web game…\n\nCreative, curious and motivated, I'm always looking to learn and create unique experiences! Away from screens, I'm also into astronomy and sports.",
     },
     qualities: [
       { fr: "Autonome", en: "Self-driven" },
