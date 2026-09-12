@@ -9,6 +9,9 @@
    - Laisse une valeur vide ("") pour masquer l'élément correspondant.
    ========================================================================== */
 
+// Logos de logiciels (bibliothèque libre Devicon)
+const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
+
 const SITE = {
   defaultLang: "fr",
 
@@ -17,10 +20,6 @@ const SITE = {
     firstName: "Gabriel",
     lastName: "Michaud",
     initials: "GM",
-    tagline: {
-      fr: "Je crée des jeux vidéo, du game design à la programmation, en passant par la musique et la 3D.",
-      en: "I make video games, from game design and programming to music and 3D.",
-    },
     availability: "", // ex : { fr: "Disponible pour un stage", en: "Open to internships" }
     location: "Lyon, France",
     email: "gabrielmimi74@gmail.com",
@@ -28,7 +27,7 @@ const SITE = {
     photo: "assets/images/photo.jpg",
     cv: "assets/cv.pdf",
     // Crée un formulaire gratuit sur https://formspree.io puis colle son identifiant ici (ex : "xzdqvkrq").
-    // Tant que ce n'est pas fait, le formulaire est masqué et seul l'email s'affiche.
+    // Tant que ce n'est pas fait, le formulaire ouvre l'application mail du visiteur avec son message pré-rempli.
     formspreeId: "VOTRE_ID_FORMSPREE",
     socials: [
       { label: "LinkedIn", url: "https://www.linkedin.com/in/gabriel-michaud-565798241" },
@@ -45,18 +44,15 @@ const SITE = {
     },
     paragraphs: [
       {
-        fr: "Je m'appelle Gabriel et je suis passionné par la création de jeux vidéo, que ce soit à travers le game design, la programmation, la musique ou la 3D.",
-        en: "My name is Gabriel and I'm passionate about making video games, whether through game design, programming, music or 3D.",
+        fr: "Ce portfolio rassemble les jeux sur lesquels j'ai travaillé, en équipe comme en stage : un souls-like, un party game en coopération, un jeu d'horreur psychologique, un FPS nerveux et un jeu web.",
+        en: "This portfolio brings together the games I've worked on, in teams and during internships: a souls-like, a co-op party game, a psychological horror game, a fast-paced FPS and a web game.",
       },
       {
-        fr: "Formé à l'ICAN Lyon (Bachelor de game design, 2023–2026), j'ai travaillé sur des projets très variés : souls-like, party game en coopération, horreur psychologique, FPS nerveux, jeu web…",
-        en: "Trained at ICAN Lyon (Bachelor in Game Design, 2023–2026), I've worked on very different projects: a souls-like, a co-op party game, psychological horror, a fast FPS, a web game…",
-      },
-      {
-        fr: "Créatif, curieux et motivé, je cherche toujours à apprendre et à créer des expériences uniques !",
-        en: "Creative, curious and motivated, I'm always looking to learn and create unique experiences!",
+        fr: "Pour chaque projet, vous trouverez mon rôle, les outils utilisés et, quand c'est possible, une vidéo pour voir le jeu en action.",
+        en: "For each project, you'll find my role, the tools used and, when available, a video to see the game in action.",
       },
     ],
+    cta: { fr: "Découvrir les projets", en: "Explore the projects" },
     tags: ["Game Design", { fr: "Programmation", en: "Programming" }, "Level Design", { fr: "Prototypage", en: "Prototyping" }, "Sound Design", "3D"],
     stats: [
       { value: "5", label: { fr: "projets de jeux", en: "game projects" } },
@@ -118,7 +114,8 @@ const SITE = {
       roles: [{ fr: "Programmeur", en: "Programmer" }, "Game Designer"],
       team: "",
       tags: ["Party game", "Co-op"],
-      thumb: "assets/images/projets/crazy-market.jpg",
+      // Image tirée de la vidéo YouTube — remplace par "assets/images/projets/crazy-market.jpg" si tu préfères ta propre image
+      thumb: "https://i.ytimg.com/vi/Q-eBa41Cv_s/maxresdefault.jpg",
       summary: {
         fr: "Un party game en coopération. (À compléter : le principe du jeu en une ou deux phrases.)",
         en: "A co-op party game. (To complete: the game's concept in one or two sentences.)",
@@ -127,7 +124,7 @@ const SITE = {
         fr: "À compléter : l'idée du jeu, ses mécaniques principales et ce que tu as fait en tant que programmeur et game designer.",
         en: "To complete: the game's idea, core mechanics and what you did as programmer and game designer.",
       },
-      video: "",
+      video: "https://www.youtube.com/embed/Q-eBa41Cv_s",
       link: "",
       linkLabel: { fr: "Voir le jeu", en: "View the game" },
     },
@@ -209,12 +206,12 @@ const SITE = {
     {
       category: { fr: "Programmation", en: "Programming" },
       items: [
-        { name: "Unity", icon: "assets/icons/unity.png" },
-        { name: "Unreal Engine", icon: "assets/icons/unreal.png" },
-        { name: "Blueprint", badge: "BP" },
+        { name: "Unity", icon: `${DEVICON}/unity/unity-original.svg`, badge: "U" },
+        { name: "Unreal Engine", icon: `${DEVICON}/unrealengine/unrealengine-original.svg`, badge: "UE" },
+        { name: "Blueprint", badge: "BP" }, // pas de logo officiel
         { name: "C#", icon: "assets/icons/csharp.png" },
-        { name: "C++", badge: "C++" },
-        { name: "HTML", badge: "</>" },
+        { name: "C++", icon: `${DEVICON}/cplusplus/cplusplus-original.svg`, badge: "C++" },
+        { name: "HTML", icon: `${DEVICON}/html5/html5-original.svg`, badge: "</>" },
       ],
     },
     {
@@ -233,10 +230,10 @@ const SITE = {
       items: [
         { name: "Suite Adobe", icon: "assets/icons/adobe.png" },
         { name: "Blender", icon: "assets/icons/blender.png" },
-        { name: "Figma", badge: "Fi" },
-        { name: "GitHub", icon: "assets/icons/github.png" },
-        { name: "Notion", badge: "N" },
-        { name: "Suite Office", badge: "Of" },
+        { name: "Figma", icon: `${DEVICON}/figma/figma-original.svg`, badge: "Fi" },
+        { name: "GitHub", icon: `${DEVICON}/github/github-original.svg`, badge: "GH" },
+        { name: "Notion", icon: `${DEVICON}/notion/notion-original.svg`, badge: "N" },
+        { name: "Suite Office", icon: "https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/microsoftoffice.svg", badge: "Of" },
       ],
     },
     {
@@ -344,7 +341,7 @@ const SITE = {
 const UI = {
   fr: {
     "nav.about": "À propos",
-    "nav.whoami": "Qui suis-je ?",
+    "nav.whoami": "Qui suis-je ?",
     "nav.projects": "Projets",
     "nav.skills": "Compétences",
     "nav.path": "Parcours",
@@ -376,7 +373,7 @@ const UI = {
     "form.sending": "Envoi…",
     "form.sent": "✓ Message envoyé !",
     "form.error": "Erreur, réessayez ou écrivez-moi par email.",
-    "form.notConfigured": "Formulaire pas encore configuré (voir content.js)",
+    "form.mailto": "Votre application mail va s'ouvrir avec votre message.",
     "detail.duration": "Durée",
     "detail.year": "Période",
     "detail.engine": "Moteur",
@@ -432,7 +429,7 @@ const UI = {
     "form.sending": "Sending…",
     "form.sent": "✓ Message sent!",
     "form.error": "Error, try again or email me directly.",
-    "form.notConfigured": "Form not configured yet (see content.js)",
+    "form.mailto": "Your email app will open with your message.",
     "detail.duration": "Duration",
     "detail.year": "Period",
     "detail.engine": "Engine",
