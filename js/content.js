@@ -114,8 +114,7 @@ const SITE = {
       roles: [{ fr: "Programmeur", en: "Programmer" }, "Game Designer"],
       team: "",
       tags: ["Party game", "Co-op"],
-      // Image tirée de la vidéo YouTube — remplace par "assets/images/projets/crazy-market.jpg" si tu préfères ta propre image
-      thumb: "https://i.ytimg.com/vi/2Gw407vtmE0/maxresdefault.jpg",
+      thumb: "assets/images/projets/crazy-market.jpg",
       summary: {
         fr: "Un party game en coopération. (À compléter : le principe du jeu en une ou deux phrases.)",
         en: "A co-op party game. (To complete: the game's concept in one or two sentences.)",
