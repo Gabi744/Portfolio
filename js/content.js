@@ -80,7 +80,7 @@ const SITE = {
       roles: [{ fr: "Programmeur", en: "Programmer" }, "Sound Designer"],
       team: { fr: "8 personnes", en: "8 people" },
       tags: ["Unreal Engine 5", "Blueprint", "Sound Design"],
-      thumb: "assets/images/projets/ira.png",
+      thumb: "assets/images/projets/ira.jpg",
       summary: {
         fr: "Un jeu d'aventure souls-like dans un empire dystopique à l'esthétique romaine, réalisé en équipe à l'ICAN.",
         en: "A souls-like adventure game set in a Roman-inspired dystopian empire, made as a team at ICAN.",
