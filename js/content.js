@@ -28,7 +28,7 @@ const SITE = {
     cv: "assets/cv.pdf",
     // Crée un formulaire gratuit sur https://formspree.io puis colle son identifiant ici (ex : "xzdqvkrq").
     // Tant que ce n'est pas fait, le formulaire ouvre l'application mail du visiteur avec son message pré-rempli.
-    formspreeId: "VOTRE_ID_FORMSPREE",
+    formspreeId: "myeyqynn",
     socials: [
       { label: "LinkedIn", url: "https://www.linkedin.com/in/gabriel-michaud-565798241" },
       { label: "GitHub", url: "https://github.com/Gabi744" },
