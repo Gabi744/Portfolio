@@ -194,7 +194,6 @@
     $("#modalContent").innerHTML = `
       <div class="modal-hero">${p.video ? video(p.video) : media(p.thumb, { ratio: "16/9", alt: t(p.title) })}</div>
       <div class="modal-body">
-        <p class="card-meta">${[t(p.year), t(p.genre)].filter(Boolean).map(esc).join(" · ")}</p>
         <h2 id="modalTitle">${esc(t(p.title))}</h2>
         <div class="tags">${(p.tags || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("")}</div>
         <div class="modal-desc">${desc}</div>
@@ -347,14 +346,14 @@
     if (q) q.innerHTML = (A.qualities || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("");
 
     $("#favBanner").innerHTML = `
-      ${media(A.favorite.cover, { ratio: "3/4", alt: t(A.favorite.title) })}
+      ${media(A.favorite.cover, { ratio: "2/3", alt: t(A.favorite.title) })}
       <div><span class="badge">🏆 ${tr("games.favorite")}</span><strong>${esc(t(A.favorite.title))}</strong><p>${esc(t(A.favorite.text))}</p></div>`;
 
     // Jeu préféré par genre (case « Jeu à ajouter » si le nom est vide)
     const genres = $("#genreGrid");
     if (genres) genres.innerHTML = (A.genreFavorites || []).map((g) => `
       <div class="genre-card reveal${t(g.name) ? "" : " is-empty"}">
-        ${media(g.cover, { ratio: "3/4", alt: t(g.name), label: tr("games.toAdd") })}
+        ${media(g.cover, { ratio: "2/3", alt: t(g.name), label: tr("games.toAdd") })}
         <div>
           <span class="genre-label">${esc(t(g.genre))}</span>
           <h3>${esc(t(g.name) || tr("games.toAdd"))}</h3>
