@@ -372,7 +372,7 @@ ul, ol { list-style: none; }
 .social::after { content: " ↗"; color: var(--accent); }
 .social:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 
-.contact-form { background: var(--surface); border: 2px solid var(--text); border-radius: var(--radius); padding: clamp(1.25rem, 4vw, 2.25rem); display: flex; flex-direction: column; gap: 1.1rem; box-shadow: 10px 10px 0 var(--accent-2); }
+.contact-form { background: var(--surface); border: 2px solid var(--text); border-radius: var(--radius); padding: clamp(1.25rem, 4vw, 2.25rem); display: flex; flex-direction: column; gap: 1.1rem; box-shadow: 10px 10px 0 var(--accent); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 .field { display: flex; flex-direction: column; gap: 0.4rem; }
 .field span { font-family: var(--f-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
@@ -467,7 +467,7 @@ ul, ol { list-style: none; }
 .whoami-intro p + p { margin-top: 1rem; }
 .qualities { margin-top: 1.5rem; }
 .qualities:empty { display: none; }
-.whoami-photo { width: clamp(180px, 22vw, 280px); border: 2px solid var(--text); border-radius: 50% 50% var(--radius) var(--radius); overflow: hidden; box-shadow: 12px 12px 0 var(--accent-2); }
+.whoami-photo { width: clamp(180px, 22vw, 280px); border: 2px solid var(--text); border-radius: 50% 50% var(--radius) var(--radius); overflow: hidden; box-shadow: 12px 12px 0 var(--accent); }
 .whoami-photo .media { border-radius: inherit; }
 
 .fav-banner {
@@ -499,6 +499,26 @@ ul, ol { list-style: none; }
   width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
   background: var(--accent); color: var(--accent-ink); font-size: 0.75rem;
 }
+
+/* Jeu préféré par genre */
+.genre-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.25rem; }
+.genre-card {
+  display: grid; grid-template-columns: 96px 1fr; gap: 1.1rem; align-items: start;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem;
+  transition: transform 0.3s var(--ease), border-color 0.3s;
+}
+.genre-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.genre-card .media { border-radius: 8px; }
+.genre-card .media-ph { padding: 0.5rem; }
+.genre-card .media-ph strong { font-size: 0.72rem; }
+.genre-card .media-ph code { display: none; }
+.genre-label {
+  display: inline-block; font-family: var(--f-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); border: 1px solid var(--line-strong); padding: 0.15rem 0.55rem; border-radius: 999px;
+}
+.genre-card h3 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; margin: 0.55rem 0 0.35rem; }
+.genre-card p { color: var(--muted); font-size: 0.9rem; }
+.genre-card.is-empty h3 { color: var(--muted); font-size: 1rem; }
 
 .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
 .hobby { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.75rem; transition: transform 0.3s var(--ease), border-color 0.3s; }

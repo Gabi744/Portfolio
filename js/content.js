@@ -107,7 +107,7 @@ const SITE = {
     {
       id: "crazy-market",
       title: "Crazy Market",
-      year: "",
+      year: "2025",
       duration: "",
       genre: { fr: "Party game en co-op", en: "Co-op party game" },
       engine: "",
@@ -130,7 +130,7 @@ const SITE = {
     {
       id: "alone",
       title: "Alone",
-      year: "",
+      year: "2025",
       duration: "",
       genre: { fr: "Horreur psychologique", en: "Psychological horror" },
       engine: "",
@@ -301,39 +301,56 @@ const SITE = {
       { fr: "Travail en équipe", en: "Team player" },
     ],
     favorite: {
-      title: "Ton jeu préféré",
+      title: "Outer Wilds",
+      cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/753640/library_600x900.jpg",
       text: {
-        fr: "À compléter : explique pourquoi c'est ton jeu préféré de tous les temps.",
-        en: "To complete: explain why it's your all-time favorite game.",
+        fr: "Découvert au bon moment, Outer Wilds m'a marqué comme aucun autre jeu. J'ai adoré son game design, et ses musiques me restent encore en tête.",
+        en: "I discovered Outer Wilds at just the right time, and it stayed with me like no other game. I loved its game design, and its music is still in my head.",
       },
     },
-    /* Astuce : pour un jeu Steam, tu peux utiliser directement l'image officielle :
-       https://cdn.cloudflare.steamstatic.com/steam/apps/<ID_STEAM>/library_600x900.jpg
-       favorite: true → le jeu apparaît avec une étoile et dans la bannière « jeu préféré » */
-    gameCategories: [
+    /* Jeu préféré par genre. Laisse name vide ("") pour une case « Jeu à ajouter ».
+       Astuce : pour un jeu Steam, l'image officielle est
+       https://cdn.cloudflare.steamstatic.com/steam/apps/<ID_STEAM>/library_600x900.jpg */
+    genreFavorites: [
       {
-        title: { fr: "Catégorie 1 (ex : Aventure)", en: "Category 1 (e.g. Adventure)" },
-        games: [
-          { name: "Jeu 1", cover: "assets/images/jeux/jeu-1.jpg", favorite: true },
-          { name: "Jeu 2", cover: "assets/images/jeux/jeu-2.jpg" },
-          { name: "Jeu 3", cover: "assets/images/jeux/jeu-3.jpg" },
-          { name: "Jeu 4", cover: "assets/images/jeux/jeu-4.jpg" },
-        ],
+        genre: { fr: "Course", en: "Racing" },
+        name: "Gran Turismo",
+        cover: "https://upload.wikimedia.org/wikipedia/en/1/14/Gran_Turismo_7_cover_art.jpg",
+        text: { fr: "Un jeu superbe visuellement, qui me donne toujours envie d'enchaîner les courses.", en: "A visually stunning game that always makes me want to race one more lap." },
       },
       {
-        title: { fr: "Catégorie 2 (ex : Action)", en: "Category 2 (e.g. Action)" },
-        games: [
-          { name: "Jeu 5", cover: "assets/images/jeux/jeu-5.jpg" },
-          { name: "Jeu 6", cover: "assets/images/jeux/jeu-6.jpg" },
-          { name: "Jeu 7", cover: "assets/images/jeux/jeu-7.jpg" },
-        ],
+        genre: { fr: "Histoire", en: "Story" },
+        name: "Disco Elysium",
+        cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/632470/library_600x900.jpg",
+        text: { fr: "Une histoire d'une rare profondeur, un univers qui sait nous intégrer, et des musiques marquantes.", en: "A story of rare depth, a world that truly draws you in, and a memorable soundtrack." },
       },
+      {
+        genre: "RPG",
+        name: "Cyberpunk 2077",
+        cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg",
+        text: { fr: "Musiques, direction artistique, gameplay : un jeu extrêmement complet, réussi sur tous les plans.", en: "Music, art direction, gameplay: an incredibly complete game that shines on every level." },
+      },
+      { genre: { fr: "Énigme", en: "Puzzle" }, name: "", cover: "", text: "" },
+      { genre: "Action", name: "", cover: "", text: "" },
+      { genre: { fr: "Horreur", en: "Horror" }, name: "", cover: "", text: "" },
     ],
     hobbies: [
-      { icon: "🔭", title: { fr: "Astronomie", en: "Astronomy" }, text: { fr: "À compléter : ce qui te passionne dans l'astronomie.", en: "To complete: what fascinates you about astronomy." } },
-      { icon: "🎵", title: { fr: "Musique", en: "Music" }, text: { fr: "À compléter : ce que tu écoutes, joues ou composes.", en: "To complete: what you listen to, play or compose." } },
-      { icon: "🏃", title: "Sport", text: { fr: "À compléter : les sports que tu pratiques ou suis.", en: "To complete: the sports you play or follow." } },
-      { icon: "🎮", title: { fr: "Jeux vidéo", en: "Video games" }, text: { fr: "À compléter : les jeux et les genres qui t'ont marqué.", en: "To complete: the games and genres that shaped you." } },
+      {
+        icon: "🔭", title: { fr: "Astronomie", en: "Astronomy" },
+        text: { fr: "Je trouve l'univers magnifique et plein de mystères. C'est justement ce qui me fascine : j'adore en apprendre toujours plus sur ce qui nous entoure.", en: "I find the universe beautiful and full of mysteries. That's exactly what fascinates me: I love learning more and more about what surrounds us." },
+      },
+      {
+        icon: "🎵", title: { fr: "Musique", en: "Music" },
+        text: { fr: "C'est l'art qui me fait ressentir le plus d'émotions. Je l'aime tellement que j'ai essayé d'en composer moi-même sur FL Studio, pour le plaisir.", en: "It's the art form that makes me feel the most emotions. I love it so much that I've tried composing my own music in FL Studio, just for fun." },
+      },
+      {
+        icon: "🥊", title: "Sport",
+        text: { fr: "J'ai pratiqué beaucoup de sports : six ans de boxe, du tennis et de la musculation. J'aime aussi regarder les sports de combat et automobiles.", en: "I've done a lot of sports: six years of boxing, tennis and weight training. I also enjoy watching combat sports and motorsports." },
+      },
+      {
+        icon: "🎮", title: { fr: "Jeux vidéo", en: "Video games" },
+        text: { fr: "C'est l'art que j'ai le plus consommé et celui que je connais le mieux. C'est aussi le plus complet : il réunit image, musique, histoire et interaction.", en: "It's the art form I've consumed the most and know best. It's also the most complete: it brings together visuals, music, story and interaction." },
+      },
     ],
   },
 };
@@ -387,7 +404,8 @@ const UI = {
     "ph.video": "Vidéo à ajouter",
     "ph.videoHint": "lien YouTube « embed » dans js/content.js",
     "whoami.eyebrow": "Qui suis-je ?",
-    "whoami.title": "Au-delà du portfolio",
+    "whoami.title": "Qui suis-je ?",
+    "games.toAdd": "Jeu à ajouter",
     "games.eyebrow": "Univers ludique",
     "games.title": "Les jeux qui m'ont marqué",
     "games.favorite": "Mon jeu préféré",
@@ -443,7 +461,8 @@ const UI = {
     "ph.video": "Video to add",
     "ph.videoHint": "YouTube “embed” link in js/content.js",
     "whoami.eyebrow": "Who am I?",
-    "whoami.title": "Beyond the portfolio",
+    "whoami.title": "Who am I?",
+    "games.toAdd": "Game to add",
     "games.eyebrow": "Gaming universe",
     "games.title": "Games that shaped me",
     "games.favorite": "My favorite game",

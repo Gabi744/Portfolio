@@ -346,19 +346,20 @@
     const q = $("#qualities");
     if (q) q.innerHTML = (A.qualities || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("");
 
-    const favGame = A.gameCategories.flatMap((c) => c.games).find((g) => g.favorite);
     $("#favBanner").innerHTML = `
-      ${media(A.favorite.cover || favGame?.cover, { ratio: "3/4", alt: t(A.favorite.title) })}
+      ${media(A.favorite.cover, { ratio: "3/4", alt: t(A.favorite.title) })}
       <div><span class="badge">🏆 ${tr("games.favorite")}</span><strong>${esc(t(A.favorite.title))}</strong><p>${esc(t(A.favorite.text))}</p></div>`;
 
-    $("#gameCategories").innerHTML = A.gameCategories.map((c) => `
-      <div class="game-cat reveal">
-        <div class="game-cat-head"><h3>${esc(t(c.title))}</h3><span class="line"></span><span class="count">${c.games.length}</span></div>
-        <div class="game-grid">${c.games.map((g) => `
-          <div class="game-card${g.favorite ? " is-fav" : ""}">
-            ${media(g.cover, { ratio: "3/4", alt: t(g.name), label: t(g.name) })}
-            <span class="game-name">${esc(t(g.name))}</span>
-          </div>`).join("")}</div>
+    // Jeu préféré par genre (case « Jeu à ajouter » si le nom est vide)
+    const genres = $("#genreGrid");
+    if (genres) genres.innerHTML = (A.genreFavorites || []).map((g) => `
+      <div class="genre-card reveal${t(g.name) ? "" : " is-empty"}">
+        ${media(g.cover, { ratio: "3/4", alt: t(g.name), label: tr("games.toAdd") })}
+        <div>
+          <span class="genre-label">${esc(t(g.genre))}</span>
+          <h3>${esc(t(g.name) || tr("games.toAdd"))}</h3>
+          ${t(g.text) ? `<p>${esc(t(g.text))}</p>` : ""}
+        </div>
       </div>`).join("");
 
     $("#hobbyGrid").innerHTML = A.hobbies.map((h) => `
