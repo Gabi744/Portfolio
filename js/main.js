@@ -20,6 +20,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const get = (path) => path.split(".").reduce((o, k) => o?.[k], SITE);
   const words = (list) => (list || []).map((x) => `<span>${esc(t(x))}</span>`).join("");
+  const tags = (list) => (list || []).map((x) => `<span class="tag">${esc(t(x))}</span>`).join("");
   const P = SITE.profile;
   const fullName = () => `${t(P.firstName)} ${t(P.lastName)}`.trim();
 
@@ -75,7 +76,7 @@
     const box = $("#aboutParagraphs"); if (!box) return;
     const A = SITE.about;
     box.innerHTML = A.paragraphs.map((p) => `<p>${esc(t(p))}</p>`).join("");
-    $("#aboutTags").innerHTML = words(A.tags);
+    $("#aboutTags").innerHTML = tags(A.tags);
     $("#aboutCta").innerHTML = A.cta ? `<a href="#projects" class="link about-cta">${esc(t(A.cta))} ${ARROW_DOWN}</a>` : "";
     $("#aboutStats").innerHTML = (A.stats || []).map((s) => `<div class="stat"><strong>${esc(t(s.value))}</strong><span>${esc(t(s.label))}</span></div>`).join("");
   }
@@ -318,7 +319,7 @@
     const A = SITE.aboutPage;
     photo.innerHTML = media(P.photo, { ratio: "4/5", alt: fullName(), eager: true });
     $("#whoamiIntro").innerHTML = t(A.intro).split(/\n\s*\n/).map((x) => `<p>${esc(x.trim())}</p>`).join("");
-    $("#qualities").innerHTML = words(A.qualities);
+    $("#qualities").innerHTML = tags(A.qualities);
 
     $("#favBanner").innerHTML = `
       ${media(A.favorite.cover, { ratio: "2/3", alt: t(A.favorite.title) })}
@@ -340,7 +341,7 @@
       </div>`).join("");
 
     $("#hobbyGrid").innerHTML = A.hobbies.map((h) => `
-      <div class="hobby reveal"><h3>${esc(t(h.title))}</h3><p>${esc(t(h.text))}</p></div>`).join("");
+      <div class="hobby reveal">${h.icon ? `<span class="hobby-icon" aria-hidden="true">${esc(h.icon)}</span>` : ""}<h3>${esc(t(h.title))}</h3><p>${esc(t(h.text))}</p></div>`).join("");
   }
 
   /* ---------- Apparition au défilement ---------- */
