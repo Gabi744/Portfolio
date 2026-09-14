@@ -17,7 +17,6 @@
   <!-- NAVIGATION -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a href="index.html" class="logo" data-fill="profile.initials">PN</a>
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="index.html" data-i18n="nav.home">Accueil</a>
         <a href="about.html" class="active" data-i18n="nav.whoami">Qui suis-je ?</a>
@@ -52,40 +51,34 @@
     <section class="page-hero">
       <div class="wrap whoami-grid">
         <div class="whoami-text">
-          <h1 class="h1 reveal" data-i18n="whoami.title">Au-delà du portfolio</h1>
-          <div class="whoami-intro reveal" id="whoamiIntro"></div>
-          <div class="tags qualities reveal" id="qualities"></div>
+          <h1 class="h1" data-i18n="whoami.title">Qui suis-je ?</h1>
+          <div class="whoami-intro" id="whoamiIntro"></div>
+          <p class="words" id="qualities"></p>
         </div>
-        <div class="whoami-photo reveal" id="whoamiPhoto"></div>
+        <div class="whoami-photo" id="whoamiPhoto"></div>
       </div>
     </section>
 
     <!-- JEUX -->
-    <section class="section section-alt" id="games">
-      <div class="wrap">
+    <section class="section" id="games">
+      <div class="wrap split">
         <h2 class="h2 reveal" data-i18n="games.title">Les jeux qui m'ont marqué</h2>
-        <div class="fav-banner reveal" id="favBanner"></div>
-        <div class="genre-grid" id="genreGrid"></div>
+        <div>
+          <div class="fav reveal" id="favBanner"></div>
+          <div class="genre-list" id="genreGrid"></div>
+        </div>
       </div>
     </section>
 
     <!-- LOISIRS -->
     <section class="section" id="hobbies">
-      <div class="wrap">
+      <div class="wrap split">
         <h2 class="h2 reveal" data-i18n="hobbies.title">Loisirs &amp; passions</h2>
         <div class="hobby-grid" id="hobbyGrid"></div>
       </div>
     </section>
 
   </main>
-
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <span class="footer-name" id="footerName"></span>
-      <span class="footer-copy">© <span id="footerYear"></span></span>
-      <a href="#top" class="footer-top" data-i18n="footer.top">Retour en haut</a>
-    </div>
-  </footer>
 
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>
