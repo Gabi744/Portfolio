@@ -31,7 +31,6 @@ const SITE = {
     formspreeId: "myeyqynn",
     socials: [
       { label: "LinkedIn", url: "https://www.linkedin.com/in/gabriel-michaud-565798241" },
-      { label: "GitHub", url: "https://github.com/Gabi744" },
       { label: "itch.io", url: "" },
     ],
   },

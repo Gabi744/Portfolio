@@ -57,8 +57,7 @@
       btn.textContent = lang === "fr" ? "EN" : "FR";
       btn.setAttribute("aria-label", lang === "fr" ? "Switch to English" : "Passer en français");
     }
-    const isAbout = document.body.classList.contains("page-whoami");
-    document.title = isAbout ? `${tr("nav.whoami")} — ${fullName()}` : `${fullName()} — Portfolio`;
+    document.title = "Portfolio";
   }
 
   /* ---------- Blocs communs ---------- */
