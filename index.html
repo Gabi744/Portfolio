@@ -18,11 +18,10 @@
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="#about" data-i18n="nav.about">À propos</a>
+        <a href="projets.html" data-i18n="nav.projects">Projets</a>
+        <a href="parcours.html" data-i18n="nav.path">Parcours</a>
+        <a href="competences.html" data-i18n="nav.skills">Compétences</a>
         <a href="about.html" data-i18n="nav.whoami">Qui suis-je ?</a>
-        <a href="#projects" data-i18n="nav.projects">Projets</a>
-        <a href="#skills" data-i18n="nav.skills">Compétences</a>
-        <a href="#path" data-i18n="nav.path">Parcours</a>
         <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="nav-tools">
@@ -39,11 +38,11 @@
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" data-i18n="nav.about">À propos</a>
+    <a href="index.html" data-i18n="nav.home">Accueil</a>
+    <a href="projets.html" data-i18n="nav.projects">Projets</a>
+    <a href="parcours.html" data-i18n="nav.path">Parcours</a>
+    <a href="competences.html" data-i18n="nav.skills">Compétences</a>
     <a href="about.html" data-i18n="nav.whoami">Qui suis-je ?</a>
-    <a href="#projects" data-i18n="nav.projects">Projets</a>
-    <a href="#skills" data-i18n="nav.skills">Compétences</a>
-    <a href="#path" data-i18n="nav.path">Parcours</a>
     <a href="contact.html" data-i18n="nav.contact">Contact</a>
   </div>
 
@@ -61,15 +60,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
             <span data-fill="profile.location">Lyon, France</span>
           </p>
-          <!-- Menu de l'accueil : un gros bouton par section -->
-          <nav class="hero-menu reveal" aria-label="Sections du portfolio">
-            <a href="#projects" class="hero-link is-primary"><span data-i18n="hero.projects">Voir mes projets</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#path" class="hero-link"><span data-i18n="hero.path">Voir mon parcours</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#skills" class="hero-link"><span data-i18n="hero.skills">Voir mes compétences</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="about.html" class="hero-link"><span data-i18n="nav.whoami">Qui suis-je ?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a href="contact.html" class="hero-link"><span data-i18n="hero.contact">Me contacter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#" class="hero-link" id="cvLink" download><span data-i18n="hero.cv">Télécharger mon CV</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></a>
-          </nav>
         </div>
         <div class="hero-visual reveal">
           <div class="hero-frame" id="heroPhoto"></div>
@@ -88,65 +78,27 @@
           <div class="about-body reveal">
             <div id="aboutParagraphs"></div>
             <div class="tags" id="aboutTags"></div>
-            <div id="aboutCta"></div>
           </div>
         </div>
         <div class="stats reveal" id="aboutStats"></div>
       </div>
     </section>
 
-    <!-- PROJETS -->
-    <section class="section section-alt" id="projects">
+    <!-- MENU : un gros bouton par page -->
+    <section class="home-menu-section">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2 class="h2 reveal" data-i18n="projects.title">Projets sélectionnés</h2>
-          </div>
-          <div class="filters reveal" id="filters" role="group" aria-label="Filtrer les projets"></div>
-        </div>
-        <div id="featured"></div>
-        <div class="project-grid" id="projectGrid"></div>
+        <nav class="hero-menu home-menu reveal" aria-label="Pages du portfolio">
+          <a href="projets.html" class="hero-link is-primary"><span data-i18n="hero.projects">Voir mes projets</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="parcours.html" class="hero-link"><span data-i18n="hero.path">Voir mon parcours</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="competences.html" class="hero-link"><span data-i18n="hero.skills">Voir mes compétences</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="about.html" class="hero-link"><span data-i18n="nav.whoami">Qui suis-je ?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="contact.html" class="hero-link"><span data-i18n="hero.contact">Me contacter</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#" class="hero-link" id="cvLink" download><span data-i18n="hero.cv">Télécharger mon CV</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></a>
+        </nav>
       </div>
     </section>
-
-    <!-- COMPÉTENCES -->
-    <section class="section" id="skills">
-      <div class="wrap">
-        <h2 class="h2 reveal" data-i18n="skills.title">Compétences</h2>
-        <div class="skills-grid" id="skillsGrid"></div>
-      </div>
-    </section>
-
-    <!-- PARCOURS -->
-    <section class="section section-alt" id="path">
-      <div class="wrap">
-        <h2 class="h2 reveal" data-i18n="path.title">Formation &amp; expérience</h2>
-        <div class="path-grid">
-          <div class="path-col reveal">
-            <h3 class="path-heading" data-i18n="path.education">Formation</h3>
-            <ol class="timeline" id="education"></ol>
-          </div>
-          <div class="path-col reveal">
-            <h3 class="path-heading" data-i18n="path.experience">Expériences</h3>
-            <ol class="timeline" id="experience"></ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
 
   </main>
-
-  <!-- FENÊTRE DÉTAIL PROJET -->
-  <div class="modal" id="modal" hidden>
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" type="button" data-close data-i18n-aria="detail.close" aria-label="Fermer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-content" id="modalContent"></div>
-    </div>
-  </div>
 
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <meta name="description" content="Contact : écrivez-moi pour une question, une opportunité ou un projet." />
+  <meta name="description" content="Projets de jeux vidéo de Gabriel Michaud." />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <script>try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,17 +12,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="page-whoami">
+<body class="page-sub">
 
   <!-- NAVIGATION -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="projets.html" data-i18n="nav.projects">Projets</a>
+        <a href="projets.html" class="active" data-i18n="nav.projects">Projets</a>
         <a href="parcours.html" data-i18n="nav.path">Parcours</a>
         <a href="competences.html" data-i18n="nav.skills">Compétences</a>
         <a href="about.html" data-i18n="nav.whoami">Qui suis-je ?</a>
-        <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="nav-tools">
         <a href="index.html" class="icon-btn home-btn" data-i18n-aria="nav.home" aria-label="Accueil" title="Accueil">
@@ -42,40 +42,41 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" data-i18n="nav.home">Accueil</a>
-    <a href="projets.html" data-i18n="nav.projects">Projets</a>
+    <a href="projets.html" class="active" data-i18n="nav.projects">Projets</a>
     <a href="parcours.html" data-i18n="nav.path">Parcours</a>
     <a href="competences.html" data-i18n="nav.skills">Compétences</a>
     <a href="about.html" data-i18n="nav.whoami">Qui suis-je ?</a>
-    <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
   </div>
 
   <main id="top">
 
-    <!-- CONTACT -->
-    <section class="page-hero" id="contact">
-      <div class="wrap contact-grid">
-        <div class="contact-left reveal">
-          <h1 class="h1 contact-title" data-i18n="contact.title">Me contacter</h1>
-          <p class="contact-text" data-i18n="contact.text"></p>
-          <a class="contact-email" id="contactEmail" href="#"></a>
-          <ul class="contact-list" id="contactList"></ul>
-          <div class="socials" id="socials"></div>
-        </div>
-        <form class="contact-form reveal" id="contactForm" method="POST">
-          <div class="form-row">
-            <label class="field"><span data-i18n="form.name">Nom</span><input type="text" name="name" required autocomplete="name" /></label>
-            <label class="field"><span data-i18n="form.email">Email</span><input type="email" name="email" required autocomplete="email" /></label>
+    <!-- PROJETS -->
+    <section class="page-hero" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h1 class="h1 reveal" data-i18n="projects.title">Projets sélectionnés</h1>
           </div>
-          <label class="field"><span data-i18n="form.subject">Sujet</span><input type="text" name="subject" required /></label>
-          <label class="field"><span data-i18n="form.message">Message</span><textarea name="message" rows="5" required></textarea></label>
-          <button type="submit" class="btn btn-accent btn-block" data-i18n="form.send">Envoyer le message</button>
-          <p class="form-status" id="formStatus" role="status"></p>
-        </form>
+          <div class="filters reveal" id="filters" role="group" aria-label="Filtrer les projets"></div>
+        </div>
+        <div id="featured"></div>
+        <div class="project-grid" id="projectGrid"></div>
       </div>
     </section>
 
-
   </main>
+
+  <!-- FENÊTRE DÉTAIL PROJET -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" data-close data-i18n-aria="detail.close" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
 
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>
